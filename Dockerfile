@@ -15,6 +15,10 @@ FROM python:3.11-buster
 WORKDIR /app
 COPY --from=builder /app /app
 
+# Ensure the entrypoint script is copied
+COPY ./entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 # Expose port 8000 for FastAPI
 EXPOSE 8000
 
